@@ -3,6 +3,7 @@ var mySwiper2 = new Swiper('#swiper-container', {
     watchSlidesVisibility: true,
     slidesPerView: 1,
     spaceBetween: 30,
+    speed: 6000,
     breakpoints: {
         470: {
             slidesPerView: 2,
@@ -20,7 +21,7 @@ var mySwiper2 = new Swiper('#swiper-container', {
     },
     loop: true,
     autoplay: {
-        delay: 2500,
+        delay: 0,
         disableOnInteraction: false,
     },
 

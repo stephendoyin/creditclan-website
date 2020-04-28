@@ -274,7 +274,7 @@ function scrollToTop(scrollDuration) {
 
 
 var waypoint = new Waypoint({
-    element: document.querySelector(".product-section"),
+    element: document.querySelector(".p-about-section"),
     handler: function(direction) {
         if (direction === "down") {
             btnTop.classList.add('active');
