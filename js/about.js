@@ -28,41 +28,11 @@ var mySwiper2 = new Swiper('#swiper-container', {
 })
 
 
-
-var modal = document.querySelector('.modal');
-var modaltriggerBtn = document.querySelector('.modal-btn');
-var closeBtn = document.querySelector('.close');
 var mobileNav = document.querySelector('.nav-mobile');
 var menuIconBtn = document.querySelector('.menu-icon');
 
-// open modal with contact us button
-modaltriggerBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    console.log('clicked');
-    openModal()
-});
 
-// close modal with close button
-closeBtn.addEventListener('click', function(e) {
-    closeModal();
-})
 
-// close modal with outside area click
-modal.addEventListener('click', function(e) {
-    console.log(e.target.classList)
-    if (e.target.classList[0] === 'modal')
-        closeModal();
-})
-
-function openModal() {
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-    modal.classList.remove("show");
-    document.body.style.overflow = 'auto';
-}
 
 menuIconBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -120,29 +90,14 @@ document.addEventListener('scroll', function() {
 })
 
 
-var headerText = document.querySelector('.header-text');
-var headerImg = document.querySelector('.header-img');
+
 var aboutContentTwo = document.querySelector('.about-content-two');
 var aboutContentone = document.querySelector('.about-content-one');
 var aboutContentTwoExt = document.querySelector('.about-content-one--about');
 var aboutContentoneExt = document.querySelector('.about-content-two--about');
-var callOutTitle = document.querySelector('.call-out-title');
-var modalBtn = document.querySelector('.modal-btn');
 
-var waypoint = new Waypoint({
-    element: document.querySelector('header.h-about'),
-    handler: function(direction) {
-        if (direction === "down") {
-            headerImg.classList.add('animated', 'fadeInDown', 'slower', 'display')
-            headerText.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            headerImg.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            headerText.classList.remove('animated', 'fadeInUp', 'slower', 'display')
 
-        }
-    },
-    offset: '60%'
-})
+
 
 var waypoint = new Waypoint({
     element: document.querySelector(".p-about-section--colored"),
@@ -150,10 +105,6 @@ var waypoint = new Waypoint({
         if (direction === "down") {
             aboutContentTwoExt.classList.add('animated', 'fadeInDown', 'slower', 'display')
             aboutContentoneExt.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            aboutContentTwoExt.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            aboutContentoneExt.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-
         }
     },
     offset: '60%'
@@ -165,26 +116,6 @@ var waypoint = new Waypoint({
         if (direction === "down") {
             aboutContentTwo.classList.add('animated', 'fadeInDown', 'slower', 'display')
             aboutContentone.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            aboutContentTwo.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            aboutContentone.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-
-        }
-    },
-    offset: '60%'
-})
-
-
-var waypoint = new Waypoint({
-    element: document.querySelector(".call-out-section"),
-    handler: function(direction) {
-        if (direction === "down") {
-            modalBtn.classList.add('animated', 'fadeInDown', 'slower', 'display')
-            callOutTitle.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            modalBtn.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            callOutTitle.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-
         }
     },
     offset: '60%'
@@ -256,3 +187,71 @@ var waypoint = new Waypoint({
     },
     offset: '60%'
 })
+
+
+
+window.addEventListener('load', function() {
+    var scrollBtn = document.querySelector('.scrollBtn');
+    var elmnt = document.querySelectorAll(".p-about-section")[0];
+
+
+    scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollTo(elmnt)
+    });
+
+
+    function scrollTo(element) {
+        window.scrollBy({
+            behavior: 'smooth',
+            left: 0,
+            top: element.offsetTop
+        });
+    }
+})
+
+
+var mySwiper2 = new Swiper('#swiper-container2', {
+
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    speed: 6000,
+    autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+    },
+    breakpoints: {
+        540: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        680: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        880: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+        1080: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+        },
+        1280: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+        },
+    }
+
+})
+
+window.onload = function() {
+    Particles.init({
+        selector: '.lend-bg',
+        color: "#b8e3fb",
+        connectedParticles: true,
+        sizeVariations: 67,
+        maxParticles: 10,
+    });
+};

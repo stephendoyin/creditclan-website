@@ -190,14 +190,13 @@ var waypoint = new Waypoint({
     element: document.querySelector(".featured-product"),
     handler: function(direction) {
         if (direction === "down") {
-            featuredItem.forEach((element, index) => {
-                exindex = index;
+            featuredItem.forEach((element) => {
                 element.classList.add('animated', 'fadeInUp', 'slower', 'display')
             });
         } else {
-            featuredItem.forEach((element, index) => {
-                exindex = index;
-                element.classList.add('animated', 'fadeInUp', 'slower', 'display')
+            featuredItem.forEach((element) => {
+
+                element.classList.remove('animated', 'fadeInUp', 'slower', 'display')
             });
         }
     },
@@ -205,18 +204,101 @@ var waypoint = new Waypoint({
 })
 
 
-var callOutTitle = document.querySelector('.call-out-title');
-var modalBtn = document.querySelector('.modal-btn');
+
+
+window.addEventListener('load', function() {
+    var scrollBtn = document.querySelector('.scrollBtn');
+    var elmnt = document.querySelector(".solution-section");
+
+
+    scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollTo(elmnt)
+    });
+
+
+    function scrollTo(element) {
+        window.scrollBy({
+            behavior: 'smooth',
+            left: 0,
+            top: element.offsetTop
+        });
+    }
+})
+
+
+let solutionFirstEl = document.querySelectorAll('.solution-list-item')[0];
+let solutionSecondEl = document.querySelectorAll('.solution-list-item')[1];
 
 var waypoint = new Waypoint({
-    element: document.querySelector(".call-out-section"),
+    element: document.querySelectorAll(".solution-l-section")[0],
     handler: function(direction) {
         if (direction === "down") {
-            modalBtn.classList.add('animated', 'fadeInDown', 'slower', 'display')
-            callOutTitle.classList.add('animated', 'fadeInUp', 'slower', 'display')
+            solutionFirstEl.classList.add('animated', 'fadeInDown', 'slower', 'display')
+            solutionSecondEl.classList.add('animated', 'fadeInUp', 'slower', 'display')
         } else {
-            modalBtn.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            callOutTitle.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+            solutionFirstEl.classList.remove('animated', 'fadeInDown', 'slower', 'display')
+            solutionSecondEl.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+
+        }
+    },
+    offset: '60%'
+})
+
+
+
+
+let solutionThirdEl = document.querySelectorAll('.solution-list-item')[2];
+let solutionFourthEl = document.querySelectorAll('.solution-list-item')[3];
+
+
+var waypoint = new Waypoint({
+    element: document.querySelectorAll(".solution-l-section")[1],
+    handler: function(direction) {
+        if (direction === "down") {
+            solutionThirdEl.classList.add('animated', 'fadeInDown', 'slower', 'display')
+            solutionFourthEl.classList.add('animated', 'fadeInUp', 'slower', 'display')
+        } else {
+            solutionThirdEl.classList.remove('animated', 'fadeInDown', 'slower', 'display')
+            solutionFourthEl.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+
+        }
+    },
+    offset: '60%'
+})
+
+let solutionFifthEl = document.querySelectorAll('.solution-list-item')[4];
+let solutionSixthEl = document.querySelectorAll('.solution-list-item')[5];
+
+
+var waypoint = new Waypoint({
+    element: document.querySelectorAll(".solution-l-section")[2],
+    handler: function(direction) {
+        if (direction === "down") {
+            solutionFifthEl.classList.add('animated', 'fadeInDown', 'slower', 'display')
+            solutionSixthEl.classList.add('animated', 'fadeInUp', 'slower', 'display')
+        } else {
+            solutionFifthEl.classList.remove('animated', 'fadeInDown', 'slower', 'display')
+            solutionSixthEl.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+
+        }
+    },
+    offset: '60%'
+})
+
+let solutionSeventhEl = document.querySelectorAll('.solution-list-item')[6];
+let solutionEighthEl = document.querySelectorAll('.solution-list-item')[7];
+
+
+var waypoint = new Waypoint({
+    element: document.querySelectorAll(".solution-l-section")[3],
+    handler: function(direction) {
+        if (direction === "down") {
+            solutionSeventhEl.classList.add('animated', 'fadeInDown', 'slower', 'display')
+            solutionEighthEl.classList.add('animated', 'fadeInUp', 'slower', 'display')
+        } else {
+            solutionSeventhEl.classList.remove('animated', 'fadeInDown', 'slower', 'display')
+            solutionEighthEl.classList.remove('animated', 'fadeInUp', 'slower', 'display')
 
         }
     },

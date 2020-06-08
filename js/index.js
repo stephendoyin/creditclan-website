@@ -1,37 +1,7 @@
-var modal = document.querySelector('.modal');
-var modaltriggerBtn = document.querySelector('.modal-btn');
 var closeBtn = document.querySelector('.close');
 var mobileNav = document.querySelector('.nav-mobile');
 var menuIconBtn = document.querySelector('.menu-icon');
 
-// open modal with contact us button
-modaltriggerBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    console.log('clicked');
-    openModal()
-});
-
-// close modal with close button
-closeBtn.addEventListener('click', function(e) {
-    closeModal();
-})
-
-// close modal with outside area click
-modal.addEventListener('click', function(e) {
-    console.log(e.target.classList)
-    if (e.target.classList[0] === 'modal')
-        closeModal();
-})
-
-function openModal() {
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-    modal.classList.remove("show");
-    document.body.style.overflow = 'auto';
-}
 
 menuIconBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -102,114 +72,118 @@ var swiper = new Swiper('#swiper-container-testimonial', {
 
 
 var nav = document.getElementById('nav');
-var imageOne = document.querySelector('.img-animate');
+// var imageOne = document.querySelector('.img-animate');
 var textOne = document.querySelector('.text-animate');
-var textTwo = document.querySelector('.text-animate-two');
-var productCards = document.querySelector('.product-card-container')
+// var flexSectionOne = document.querySelectorAll('.flex-section-item')[0];
+var flexSectionTwo = document.querySelectorAll('.flex-section-item')[1]
 var serviceItems = document.querySelectorAll('.services-item');
 var textthree = document.querySelector('.text-animation-three');
-var lendImg = document.querySelector('.lend-img');
+// var lendImg = document.querySelector('.lend-img');
 var lendContent = document.querySelector('.lend-content');
 var ratingItems = document.querySelectorAll('.rating-item');
 var headerText = document.querySelector('.header-text');
 var headerImg = document.querySelector('.header-img');
-var callOutTitle = document.querySelector('.call-out-title');
-var modalBtn = document.querySelector('.modal-btn');
+// var aboutTwoContentTwo = document.querySelector('.about-two-content-two');
+// var aboutOneContentOne = document.querySelector('.about-one-content-one');
 
 var waypoint = new Waypoint({
     element: document.querySelector('.about-section'),
     handler: function(direction) {
         if (direction === "down") {
-            imageOne.classList.add('animated', 'fadeInDown', 'slower', 'display')
+            // imageOne.classList.add('animated', 'fadeInDown', 'slower', 'display')
             textOne.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            imageOne.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            textOne.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+        }
+        // else {
+        //     // imageOne.classList.remove('animated', 'fadeInDown', 'slower', 'display')
+        //     textOne.classList.remove('animated', 'fadeInUp', 'slower', 'display')
 
-        }
-    },
-    offset: '60%'
-})
-var waypoint = new Waypoint({
-    element: document.querySelector(".call-out-section"),
-    handler: function(direction) {
-        if (direction === "down") {
-            modalBtn.classList.add('animated', 'fadeInDown', 'slower', 'display')
-            callOutTitle.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            modalBtn.classList.remove('animated', 'fadeInDown', 'slower', 'display')
-            callOutTitle.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-
-        }
-    },
-    offset: '60%'
-})
-var waypoint = new Waypoint({
-    element: document.querySelector('.product-section'),
-    handler: function(direction) {
-        if (direction === "down") {
-            textTwo.classList.add('animated', 'fadeInUp', 'slower', 'display')
-            productCards.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        } else {
-            textTwo.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-            productCards.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-        }
+        // }
     },
     offset: '60%'
 });
+
+var waypoint = new Waypoint({
+    element: document.querySelector(".flexed-container"),
+    handler: function(direction) {
+        if (direction === "down") {
+            flexSectionTwo.classList.add('animated', 'fadeInDown', 'slower', 'display')
+                // flexSectionTwo.classList.add('animated', 'fadeInUp', 'slower', 'display')
+        }
+
+    },
+    offset: '60%'
+});
+
+// var waypoint = new Waypoint({
+//     element: document.querySelector('.about-section-two'),
+//     handler: function(direction) {
+//         if (direction === "down") {
+//             aboutOneContentOne.classList.add('animated', 'fadeInUp', 'slower', 'display')
+//             aboutTwoContentTwo.classList.add('animated', 'fadeInUp', 'slower', 'display')
+//         } else {
+//             aboutOneContentOne.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+//             aboutTwoContentTwo.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+//         }
+//     },
+//     offset: '60%'
+// });
 
 var waypoint = new Waypoint({
     element: document.querySelector('.service-section'),
     handler: function(direction) {
         let exindex = 0;
         if (direction === "down") {
-            setTimeout(function() {
-                serviceItems.forEach((element, index) => {
-                    exindex = index;
-                    element.classList.add('animated', 'fadeInUp', 'slower', 'display')
-                });
-            }, 1000 * exindex)
 
-        } else {
-            serviceItems.forEach(element => {
-                element.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+            serviceItems.forEach((element, index) => {
+                setTimeout(function() {
+                    element.classList.add('animated', 'fadeInUp', 'slower', 'display')
+                }, 1000 * index)
             });
+
+
         }
+        // else {
+        //     serviceItems.forEach(element => {
+        //         element.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+        //     });
+        // }
     },
     offset: '60%'
-})
+});
+
+
 var waypoint = new Waypoint({
     element: document.querySelector('.lend-section'),
     handler: function(direction) {
         let exindex = 0;
         if (direction === "down") {
             lendContent.classList.add('animated', 'fadeInUp', 'slower', 'display')
-            lendImg.classList.add('animated', 'fadeInUp', 'slower', 'display')
+                // lendImg.classList.add('animated', 'fadeInUp', 'slower', 'display')
 
         } else {
             lendContent.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-            lendImg.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+                // lendImg.classList.remove('animated', 'fadeInUp', 'slower', 'display')
         }
     },
     offset: '60%'
 })
 
-var waypoint = new Waypoint({
-    element: document.querySelector('.rating-section'),
-    handler: function(direction) {
-        if (direction === "down") {
-            ratingItems.forEach(el => {
-                el.classList.add('animated', 'fadeInUp', 'slower', 'display')
-            })
-        } else {
+// var waypoint = new Waypoint({
+//     element: document.querySelector('.rating-section'),
+//     handler: function(direction) {
+//         if (direction === "down") {
+//             ratingItems.forEach(el => {
+//                 el.classList.add('animated', 'fadeInUp', 'slower', 'display')
+//             })
+//         } else {
 
-            ratingItems.forEach(el => {
-                el.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-            });
-        }
-    },
-    offset: '60%'
-})
+//             ratingItems.forEach(el => {
+//                 el.classList.remove('animated', 'fadeInUp', 'slower', 'display')
+//             });
+//         }
+//     },
+//     offset: '60%'
+// })
 
 new Waypoint({
     element: document.querySelector('#header'),
@@ -274,7 +248,7 @@ function scrollToTop(scrollDuration) {
 
 
 var waypoint = new Waypoint({
-    element: document.querySelector(".p-about-section"),
+    element: document.querySelector(".product-section"),
     handler: function(direction) {
         if (direction === "down") {
             btnTop.classList.add('active');
@@ -284,3 +258,123 @@ var waypoint = new Waypoint({
     },
     offset: '60%'
 })
+
+
+// var editor = ace.edit("editor");
+// editor.setTheme("ace/theme/twilight");
+// editor.setOptions({
+//     autoScrollEditorIntoView: true,
+//     copyWithEmptySelection: true,
+// });
+// editor.session.setMode("ace/mode/javascript");
+
+var editor = ace.edit('editor');
+var txtAra = document.querySelector('textarea[name="editor"]');
+var jsbOpts = {
+    indent_size: 2
+};
+
+editor.setTheme("ace/theme/cobalt");
+editor.getSession().setMode("ace/mode/java");
+syncEditor();
+
+
+// Main Logic
+setTimeout(formatCode, 1000); // Format sample Java after 1 second.
+
+// Functions
+function syncEditor() {
+    editor.getSession().setValue(txtAra.value);
+}
+
+function commitChanges() {
+    txtAra.value = editor.getSession().getValue();
+}
+
+function formatCode() {
+    var session = editor.getSession();
+    session.setValue(js_beautify(session.getValue(), jsbOpts));
+}
+
+
+window.onload = function() {
+    Particles.init({
+        selector: '.header-bg',
+        color: "#ffffff",
+        connectedParticles: true,
+        sizeVariations: 4,
+    });
+};
+
+
+
+var firstText = 'Financial Technology';
+var secondText = 'Digital Lending';
+var thirdText = 'Consumer Credit';
+var fourthText = 'Omnichannel collection';
+var fifthText = 'Identity Analysis';
+
+var changingText = [firstText, secondText, thirdText, fourthText, fifthText];
+var turn = changingText[1];
+var turnTrace = 0
+
+
+let swapText = document.querySelector('.swap-text');
+
+function writeText(text) {
+    swapText.innerHTML = "";
+    for (let index = 0; index < text.length; index++) {
+        setTimeout(function() {
+            appendText(text, index)
+        }, 180 * index)
+    }
+}
+
+function backspace(text) {
+    for (let index = 0; index <= text.length; index++) {
+        setTimeout(function() {
+            removeText(text, index)
+        }, 100 * index)
+    }
+}
+
+function appendText(text, index) {
+    swapText.innerHTML += text[index];
+}
+
+function removeText(text, index) {
+    swapText.innerHTML = swapText.innerHTML.slice(0, text.length - index);
+}
+
+function startBackspace() {
+    setInterval(function() {
+        if (swapText.innerHTML.trim().length === turn.length) {
+            backspace(swapText.innerHTML);
+            changeTurn();
+        }
+    }, 10000)
+}
+
+
+function startWrite() {
+    let time = 1000;
+    setInterval(function() {
+
+        if (swapText.innerHTML.trim().length === 0) {
+            writeText(turn);
+        }
+    }, time)
+}
+
+
+function changeTurn() {
+    turn = changingText[turnTrace++];
+    if (turnTrace === changingText.length)
+        turnTrace = 0;
+}
+
+//first do backspace action when page loads
+backspace(firstText);
+
+startBackspace(changingText);
+startWrite(changingText);
