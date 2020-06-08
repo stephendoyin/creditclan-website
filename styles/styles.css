@@ -251,7 +251,7 @@ header {
         text-align: left;
     }
     .header-content {
-        padding: 4rem 0;
+        padding: 3rem 0;
         flex-wrap: nowrap;
     }
     .header-content.lenders-content {
@@ -614,7 +614,7 @@ button.btn {
 }
 
 .about-list li {
-    font-size: .9rem;
+    font-size: 1rem;
     line-height: 1.3rem;
     padding-bottom: 2rem;
     color: rgba(0, 0, 0, .7);
@@ -779,19 +779,12 @@ button.btn {
     background-color: #0073B1;
 }
 
-.product-card .product-avatar .product-svg path,
-.product-card .product-avatar .product-svg circle,
-.product-card .product-avatar .product-svg rect,
-.product-card .product-avatar .product-svg polygon {
-    /* fill: #0073B1 !important; */
-}
-
 .product-svg-one path {
-    fill: rgb(16, 165, 53);
+    fill: #FB8627;
     transition: fill .5s linear;
 }
 
-.product-svg-two path,
+.product-svg path,
 .product-card .product-avatar .product-svg rect,
 .product-card .product-avatar .product-svg polygon {
     fill: #FB8627;
@@ -799,7 +792,7 @@ button.btn {
 }
 
 .product-svg-three path {
-    fill: rgb(255, 251, 0);
+    fill: #FB8627;
     transition: fill .5s linear;
 }
 
@@ -821,7 +814,7 @@ button.btn {
     line-height: 1.6;
     font-weight: 300;
     color: #314057;
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 .product-section {
@@ -1713,7 +1706,6 @@ transform: translateX(-50%);
 
 /* .solution-list-item, */
 
-.flex-section-item:nth-child(2),
 .js-opacity
 /* .about-one-content-one,
 .about-two-content-two { */
@@ -1927,70 +1919,6 @@ transform: translateX(-50%);
     background-repeat: no-repeat;
     background-size: contain;
 }
-
-
-/* .solution-l-section.bg-2 {
-background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, .9)), url(../images/tech-bg2.png);
-background-position: bottom left;
-background-repeat: no-repeat;
-background-size: contain;
-}
-*/
-
-
-/* 
-.solution-items {
-display: flex;
-justify-content: space-between;
-align-items: stretch;
-flex-wrap: wrap;
-}
-
-.solution-item {
-width: 31%;
-height: calc(74vw / 3);
-position: relative;
-margin: 20px 0;
-}
-
-.solution-item img {
-width: 100%;
-height: 100%;
-}
-
-.solution-item-content {
-position: absolute;
-width: 100%;
-height: 100%;
-background: transparent;
-top: 0;
-left: 0;
-z-index: 5;
-opacity: 0;
-transition: opacity .3s linear;
-background-color: rgba(231, 242, 253, .9);
-padding: 40px 30px;
-}
-
-*
-
-.solution-item:hover {
-background: 0 6px 50px 8px rgba(21, 131, 233, .15);
-}
-
-.solution-item h2 {
-font-size: 1.3rem;
-font-weight: 500;
-color: #314057;
-padding-bottom: 1rem;
-}
-
-.solution-item p {
-font-size: 1rem;
-font-weight: 300;
-color: #314057;
-line-height: 1.7;
-} */
 
 .lending .header-text {
     text-align: center;
@@ -2364,7 +2292,7 @@ p.cmi-second {
 }
 
 .header-bg {
-    background-color: #003754;
+    background-color: #00263b;
     width: 100%;
     position: absolute;
     transform: skew(-35deg);
@@ -3324,7 +3252,7 @@ img.illustration {
 
 .credibility-bg {
     background: url(../images/CREDIBILITY.png);
-    background-position: 110% 50%;
+    background-position: 126% 50%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     overflow: hidden;

@@ -75,7 +75,7 @@ var nav = document.getElementById('nav');
 // var imageOne = document.querySelector('.img-animate');
 var textOne = document.querySelector('.text-animate');
 // var flexSectionOne = document.querySelectorAll('.flex-section-item')[0];
-var flexSectionTwo = document.querySelectorAll('.flex-section-item')[1]
+// var flexSectionTwo = document.querySelectorAll('.flex-section-item')[1]
 var serviceItems = document.querySelectorAll('.services-item');
 var textthree = document.querySelector('.text-animation-three');
 // var lendImg = document.querySelector('.lend-img');
@@ -102,17 +102,7 @@ var waypoint = new Waypoint({
     offset: '60%'
 });
 
-var waypoint = new Waypoint({
-    element: document.querySelector(".flexed-container"),
-    handler: function(direction) {
-        if (direction === "down") {
-            flexSectionTwo.classList.add('animated', 'fadeInDown', 'slower', 'display')
-                // flexSectionTwo.classList.add('animated', 'fadeInUp', 'slower', 'display')
-        }
 
-    },
-    offset: '60%'
-});
 
 // var waypoint = new Waypoint({
 //     element: document.querySelector('.about-section-two'),
@@ -136,17 +126,13 @@ var waypoint = new Waypoint({
 
             serviceItems.forEach((element, index) => {
                 setTimeout(function() {
-                    element.classList.add('animated', 'fadeInUp', 'slower', 'display')
-                }, 1000 * index)
+                    element.classList.add('animated', 'fadeInUp', 'fast', 'display')
+                }, 300 * index)
             });
 
 
         }
-        // else {
-        //     serviceItems.forEach(element => {
-        //         element.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-        //     });
-        // }
+
     },
     offset: '60%'
 });

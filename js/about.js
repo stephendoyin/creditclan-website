@@ -255,3 +255,28 @@ window.onload = function() {
         maxParticles: 10,
     });
 };
+
+
+var serviceItems = document.querySelectorAll('.services-item');
+
+
+
+
+var waypoint = new Waypoint({
+    element: document.querySelector('.service-section'),
+    handler: function(direction) {
+        let exindex = 0;
+        if (direction === "down") {
+
+            serviceItems.forEach((element, index) => {
+                setTimeout(function() {
+                    element.classList.add('animated', 'fadeInUp', 'fast', 'display')
+                }, 300 * index)
+            });
+
+
+        }
+
+    },
+    offset: '60%'
+});
