@@ -471,10 +471,10 @@
             <div class="container">
                 <div class="strip-inner">
                     <h2>
-                        See out initiative for Covid-19 family support. You too can help
+                        See our Covid-19 family support initiative.
                     </h2>
                     <a href="" class="btn">
-                        Contribute
+                        Join Us
                     </a>
                 </div>
             </div>
@@ -921,65 +921,102 @@
                 <div class="lend">
 
                     <div class="editor-container">
-                        <textarea name="editor">package com.intland.codebeamer.controller;
-
-                            import javax.servlet.http.HttpServletRequest;
-                            
-                            import org.springframework.beans.factory.annotation.Autowired;
-                            import org.springframework.http.HttpStatus;
-                            import org.springframework.stereotype.Controller;
-                            import org.springframework.ui.Model;
-                            import org.springframework.web.bind.annotation.RequestBody;
-                            import org.springframework.web.bind.annotation.RequestParam;
-                            import org.springframework.web.bind.annotation.RequestMapping;
-                            import org.springframework.web.bind.annotation.RequestMethod;
-                            import org.springframework.web.bind.annotation.ResponseStatus;
-                            
-                            import com.intland.codebeamer.controller.ControllerUtils;
-                            import com.intland.codebeamer.controller.support.ResponseView;
-                            import com.intland.codebeamer.controller.support.RequestView;
-                            import com.intland.codebeamer.manager.TrackerManager;
-                            import com.intland.codebeamer.persistence.dto.TrackerDto;
-                            import com.intland.codebeamer.persistence.dto.UserDto;
-                            
-                            
-                            @Controller("trackerController")
-                            public class TrackerController {
-                                @Autowired
-                                private TrackerManager trackerManager;
-                            
-                                @RequestMapping(value = "/tracker", method = RequestMethod.POST)
-                                @ResponseStatus(HttpStatus.CREATED)
-                                @ResponseView
-                                public TrackerDto createTracker(HttpServletRequest request, @RequestView("TrackerDetails") TrackerDto tracker)
-                                                                throws AccessRightsException, ChangeVetoedException, IllegalArgumentException, ArtifactNameConflictException {
-                                    UserDto user = ControllerUtils.getCurrentUser(request);
-                                    trackerManager.create(user, tracker, request);
-                                    return tracker;
+                        <textarea name="editor"><?php
+                            defined('BASEPATH') OR exit('No direct script access allowed');
+                            require APPPATH.'controllers/mobi/Api.php';
+                            class Investments Extends Api{
+                                public function __construct(){
+                                    parent::__construct();
                                 }
-                            
-                                @RequestMapping(value = "/tracker/{trackerId}", method = RequestMethod.GET)
-                                @ResponseView("TrackerDetails")
-                                public TrackerDto getTracker(HttpServletRequest request, @PathVariable("trackerId") Integer trackerId) {
-                                    UserDto user = ControllerUtils.getCurrentUser(request);
-                                    TrackerDto tracker = trackerManager.findById(user, trackerId);
-                                    if (tracker == null) {
-                                        throw new ResourceNotFoundException("/tracker/" + trackerId);
+                                /**
+                                * Fetch list of loan requests available on the markets
+                                * Pg. 53b
+                                */
+                                public function pending_loan_request_get($page = 0){
+                                    $company_id = $this->get_company_id();
+                                    $limit = 10; // This determines the starting point based on the page selected by the user.
+                                    $offset = $page == 0 ? 0 : abs($page - 1) * $limit;     
+                                    $sql = "SELECT 
+                                                a.legal_name,
+                                                b.request_id, b.request_principal, b.request_tenor, b.request_period_id
+                                            from people_customers as a
+                                            inner join loan_request as b on a.people_id = b.people_id
+                                            where a.lender_id = ?
+                                            LIMIT $offset, $limit";
+                                    $q = $this->db->query($sql, [[$company_id]]);
+                                    $requests = $q->result();
+                                    // response
+                                    return $this->response(array(
+                                                    'status' => TRUE,
+                                                    "message" => $requests
+                                                    ), REST_Controller::HTTP_OK);
+                                }
+                                /**
+                                * Filter - Search pending loans by borrower name
+                                */
+                                public function filter_loan_by_name_post(){
+                                    // Validate the input
+                                    $values = $this->input->post();
+                                    if($values == null or empty($values['name'])){
+                                        return $this->response(array(
+                                            'status' => FALSE,
+                                            "message" => "Invalid Request"
+                                            ), REST_Controller::HTTP_BAD_REQUEST);
                                     }
-                                    return tracker;
+                                    // Filter the input
+                                    $name = '%'.trim(htmlspecialchars($values['name'])).'%';
+                                    // Company ID
+                                    $company_id = $this->get_company_id();
+                                    // Make call..
+                                    $sql = "SELECT 
+                                                a.legal_name,
+                                                b.request_id, b.request_principal, b.request_tenor, b.request_period_id
+                                            from people_customers as a
+                                            inner join loan_request as b on a.people_id = b.people_id
+                                            where a.lender_id = ?
+                                            and a.legal_name like ?";
+                                    $q = $this->db->query($sql, [$company_id, $name]);
+                                    $requests = $q->result();
+                                    // Response
+                                    return $this->response(array(
+                                                    'status' => TRUE,
+                                                    "message" => $requests
+                                                    ), REST_Controller::HTTP_OK);
                                 }
-                            
-                                @RequestMapping(value = "/proj/tracker/workflowGraph.spr", method = RequestMethod.GET)
-                                public String displayTransitionsGraph(HttpServletRequest request, @RequestParam("tracker_id") Integer trackerId, Model model) throws AccessRightsException, PluginException {
-                                    UserDto user = ControllerUtils.getCurrentUser(request);
-                            
-                                    ...
-                            
-                                    model.addAttribute("graphHtmlMarkup", result);
-                                    return "/bugs/tracker/workflowGraph.jsp";
+                                /**
+                                * Loand Market Overview
+                                */
+                                public function loan_market_overview_get(){
+                                    $company_id = $this->get_company_id();
+                                    // Fetch the total sum of loan reqeusts available in the market
+                                    $sql = "SELECT sum(request_principal) as value
+                                            from loan_request 
+                                            inner join people_customers on loan_request.people_id = people_customers.people_id 
+                                            where people_customers.lender_id = $company_id";
+                                    $q = $this->db->query($sql);
+                                    $total_loan_requests = $q->row();
+                                    // Fetch the total number of Lenders and Borrowers
+                                    $sql = "SELECT count(distinct people_id) as count from loan_request where platform_id = $company_id";
+                                    $q = $this->db->query($sql);
+                                    $borrowers = $q->row();
+                                    // Fetch the total number of Lender son the platform
+                                    $sql = "SELECT count(distinct lender_id) as count from request_lenders where platform_id = $company_id";
+                                    $q = $this->db->query($sql);
+                                    $lenders = $q->row();
+                                    // response
+                                    return $this->response(array(
+                                                    'status' => TRUE,
+                                                    "message" => [
+                                                        'total_loan_request_value' => $total_loan_requests->value,
+                                                        'total_active_lenderse' => $borrowers->count,
+                                                        'total_active_borrowers' => $lenders->count
+                                                    ]
+                                                    ), REST_Controller::HTTP_OK);
                                 }
+                            }
                             
-                            }</textarea>
+                            
+                            </textarea>
                         <div id="editor"></div>
                     </div>
 
