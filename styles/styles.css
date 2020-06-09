@@ -161,7 +161,7 @@ html {
 header {
     width: 100%;
     position: relative;
-    background-color: #23335f;
+    background-color: #00263b;
     background-position: center;
     background-size: cover;
     padding: 3.5rem 0;
@@ -340,8 +340,35 @@ nav.scrolled {
 }
 
 .nav-mobile.open {
-    padding: 28px 32px;
+    padding: 28px 22px;
     height: 476px;
+}
+
+.nav-mobile li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.mobile-plus,
+.mobile-minus,
+.mobile-plus-two,
+.mobile-minus-two,
+.mobile-plus-three,
+.mobile-minus-three {
+    color: #00263b;
+    font-size: 1.5rem;
+    display: none;
+}
+
+.mobile-plus.show,
+.mobile-minus.show,
+.mobile-plus-two.show,
+.mobile-minus-two.show,
+.mobile-plus-three.show,
+.mobile-minus-three.show {
+    display: initial;
 }
 
 nav.hide {
@@ -383,7 +410,7 @@ nav .menu {
     text-decoration: none;
     font-weight: 500;
     letter-spacing: .03rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -567,12 +594,12 @@ button.btn {
 
 .service-section {
     background-color: #F8FAFC;
-    padding: 70px 0 20px 0;
+    padding: 7rem 0 3rem 0;
 }
 
 .about-section,
 .about-section-two {
-    padding: 70px 0;
+    padding: 7rem 0;
     background: #F8FAFC;
 }
 
@@ -739,7 +766,7 @@ button.btn {
 
 .product-card {
     width: 100%;
-    background: #fff;
+    background: #F8FAFC;
     padding: 40px 30px;
     border-radius: 15px;
     overflow: hidden;
@@ -819,7 +846,7 @@ button.btn {
 
 .product-section {
     background: #fff;
-    padding: 4rem 0;
+    padding: 7rem 0;
 }
 
 .lend {
@@ -861,7 +888,7 @@ section {
 }
 
 .lend-section {
-    padding: 70px 0;
+    padding: 7rem 0;
     background: url(../images/700.png);
     background-position: 110% 80%;
     background-attachment: fixed;
@@ -1212,7 +1239,7 @@ header.h-about .header-img img {
 .p-about-section {
     position: relative;
     /* background: #F8FAFC; */
-    padding: 90px 0;
+    padding: 7rem 0;
 }
 
 .r-left-p {
@@ -1468,7 +1495,7 @@ footer .section-main-title {
 }
 
 footer {
-    padding: 6rem 0 0px 0;
+    padding: 7rem 0 0px 0;
     background: url(../images/footer_bg.webp);
     background-size: cover;
 }
@@ -2134,7 +2161,7 @@ p.cmi-second {
 }
 
 .section-contact {
-    padding: 6rem 0;
+    padding: 7rem 0;
     position: relative;
 }
 
@@ -2960,7 +2987,7 @@ img#collections-img {
 }
 
 .flex-container--two {
-    padding: 60px 0;
+    padding: 7rem 0;
     background: #fff;
 }
 
@@ -3261,4 +3288,44 @@ img.illustration {
 section.white-bg,
 .white-bg {
     background: #fff !important;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .1);
+}
+
+.sub-links,
+.sub-links-two,
+.sub-links-three {
+    width: 100%;
+    border-left: 1px solid #ccc;
+    height: 0;
+    overflow: hidden;
+    transition: height .4s linear;
+}
+
+.sub-links.open {
+    height: 180px;
+    overflow: auto;
+}
+
+.sub-links-two.open {
+    height: 120px;
+    overflow: auto;
+}
+
+.sub-links-three.open {
+    height: 240px;
+    overflow: auto;
+}
+
+.sub-mobile-link {
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    color: #00000099;
+    font-size: 1.2rem;
+    text-decoration: none;
+    height: 60px;
 }

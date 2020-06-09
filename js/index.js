@@ -1,7 +1,7 @@
 var closeBtn = document.querySelector('.close');
 var mobileNav = document.querySelector('.nav-mobile');
 var menuIconBtn = document.querySelector('.menu-icon');
-
+var navigation = document.querySelector('#nav');
 
 menuIconBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -12,15 +12,17 @@ menuIconBtn.addEventListener('click', function(e) {
 
 function toggleModal() {
     if (mobileNav.classList.contains('open')) {
-        mobileNav.classList.remove('open', 'slideInDown', 'fast', 'animated');
+        mobileNav.classList.remove('open');
         document.body.style.overflow = 'auto';
+        navigation.classList.remove('white-bg')
 
     } else {
-        mobileNav.classList.add('open', 'slideInDown', 'fast', 'animated');
+        mobileNav.classList.add('open');
         document.body.style.overflow = 'hidden';
-
+        navigation.classList.add('white-bg');
     }
 }
+
 
 var mySwiper2 = new Swiper('#swiper-container2', {
 
@@ -143,12 +145,9 @@ var waypoint = new Waypoint({
     handler: function(direction) {
         let exindex = 0;
         if (direction === "down") {
-            lendContent.classList.add('animated', 'fadeInUp', 'slower', 'display')
+            lendContent.classList.add('animated', 'fadeInUp', 'fast', 'display')
                 // lendImg.classList.add('animated', 'fadeInUp', 'slower', 'display')
 
-        } else {
-            lendContent.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-                // lendImg.classList.remove('animated', 'fadeInUp', 'slower', 'display')
         }
     },
     offset: '60%'
@@ -364,3 +363,40 @@ backspace(firstText);
 
 startBackspace(changingText);
 startWrite(changingText);
+
+
+
+
+
+
+
+
+
+var mobileLinkList = document.querySelectorAll('.mobile-dropdown')[0];
+var mobileLinkListTwo = document.querySelectorAll('.mobile-dropdown')[1];
+var mobileLinkListThree = document.querySelectorAll('.mobile-dropdown')[2];
+var subLinks = document.querySelector('.sub-links');
+var subLinksTwo = document.querySelector('.sub-links-two');
+var subLinksThree = document.querySelector('.sub-links-three');
+var mobilePlus = document.querySelector('.mobile-plus');
+var mobileMinus = document.querySelector('.mobile-minus');
+var mobilePlusTwo = document.querySelector('.mobile-plus-two');
+var mobileMinusTwo = document.querySelector('.mobile-minus-two');
+var mobilePlusThree = document.querySelector('.mobile-plus-three');
+var mobileMinusThree = document.querySelector('.mobile-minus-three');
+
+mobileLinkList.addEventListener('click', function() {
+    subLinks.classList.toggle("open");
+    mobileMinus.classList.toggle('show');
+    mobilePlus.classList.toggle('show');
+})
+mobileLinkListTwo.addEventListener('click', function() {
+    subLinksTwo.classList.toggle("open");
+    mobileMinusTwo.classList.toggle('show');
+    mobilePlusTwo.classList.toggle('show');
+})
+mobileLinkListThree.addEventListener('click', function() {
+    subLinksThree.classList.toggle("open");
+    mobileMinusThree.classList.toggle('show');
+    mobilePlusThree.classList.toggle('show');
+})

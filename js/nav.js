@@ -68,3 +68,33 @@ function scrollToTop(scrollDuration) {
             } else clearInterval(scrollInterval);
         }, 15);
 }
+
+
+var mobileLinkList = document.querySelectorAll('.mobile-dropdown')[0];
+var mobileLinkListTwo = document.querySelectorAll('.mobile-dropdown')[1];
+var mobileLinkListThree = document.querySelectorAll('.mobile-dropdown')[2];
+var subLinks = document.querySelector('.sub-links');
+var subLinksTwo = document.querySelector('.sub-links-two');
+var subLinksThree = document.querySelector('.sub-links-three');
+var mobilePlus = document.querySelector('.mobile-plus');
+var mobileMinus = document.querySelector('.mobile-minus');
+var mobilePlusTwo = document.querySelector('.mobile-plus-two');
+var mobileMinusTwo = document.querySelector('.mobile-minus-two');
+var mobilePlusThree = document.querySelector('.mobile-plus-three');
+var mobileMinusThree = document.querySelector('.mobile-minus-three');
+
+mobileLinkList.addEventListener('click', function() {
+    subLinks.classList.toggle("open");
+    mobileMinus.classList.toggle('show');
+    mobilePlus.classList.toggle('show');
+})
+mobileLinkListTwo.addEventListener('click', function() {
+    subLinksTwo.classList.toggle("open");
+    mobileMinusTwo.classList.toggle('show');
+    mobilePlusTwo.classList.toggle('show');
+})
+mobileLinkListThree.addEventListener('click', function() {
+    subLinksThree.classList.toggle("open");
+    mobileMinusThree.classList.toggle('show');
+    mobilePlusThree.classList.toggle('show');
+})
