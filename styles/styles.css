@@ -245,8 +245,8 @@ header {
         margin-bottom: 0;
     }
     .header-text {
-        min-width: 40%;
-        max-width: 40%;
+        min-width: 550px;
+        max-width: 550px;
         justify-content: left;
         text-align: left;
     }
