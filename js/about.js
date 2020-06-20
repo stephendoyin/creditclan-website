@@ -54,18 +54,18 @@ function toggleModal() {
 }
 
 var nav = document.getElementById('nav');
-var swiper = new Swiper('#swiper-container-testimonial', {
-    slidesPerView: 1,
-    loop: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    // spaceBetween: 20,
-    autoplay: {
-        delay: 3500
-    }
-})
+// var swiper = new Swiper('#swiper-container-testimonial', {
+//     slidesPerView: 1,
+//     loop: true,
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
+//     // spaceBetween: 20,
+//     autoplay: {
+//         delay: 3500
+//     }
+// })
 
 
 let last_known_scroll_position = window.scrollY;
