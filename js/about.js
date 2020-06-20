@@ -122,36 +122,6 @@ var waypoint = new Waypoint({
 })
 
 
-
-var tabItem = document.querySelectorAll('.tab-item');
-var tab = document.querySelector('.tab');
-var tabSection = document.querySelectorAll('.tab-section');
-
-tabItem.forEach(function(el, i) {
-    el.addEventListener('click', function(e) {
-        e.preventDefault();
-        changeActiveTab(i);
-    })
-});
-
-function changeActiveTab(index) {
-    removeActiveTab();
-    addActiveToClickedTab(index)
-}
-
-function removeActiveTab() {
-    tabItem.forEach(function(el, i) {
-        el.classList.remove('active');
-        tabSection[i].classList.remove('active');
-    })
-}
-
-function addActiveToClickedTab(index) {
-    tabItem[index].classList.add('active');
-    tabSection[index].classList.add('active');
-}
-
-
 let btnTop = document.querySelector('.btn-top')
 
 btnTop.addEventListener('click', function(e) {
