@@ -136,7 +136,7 @@ table {
 }
 
 html {
-    font-size: 13px;
+    font-size: 15px;
     font-family: Poppins, sans-serif;
 }
 
@@ -574,7 +574,7 @@ display: none;
 .p {
     font-size: 1rem;
     font-weight: 300;
-    color: rgba(0, 0, 0, .6);
+    color: rgba(0, 0, 0, .9);
     padding-bottom: 1.3rem;
     line-height: normal;
 }
@@ -1416,7 +1416,7 @@ header.h-about .header-img img {
 
 @media only screen and ( min-width: 680px) {
     html {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 

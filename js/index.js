@@ -106,20 +106,6 @@ var waypoint = new Waypoint({
 
 
 
-// var waypoint = new Waypoint({
-//     element: document.querySelector('.about-section-two'),
-//     handler: function(direction) {
-//         if (direction === "down") {
-//             aboutOneContentOne.classList.add('animated', 'fadeInUp', 'slower', 'display')
-//             aboutTwoContentTwo.classList.add('animated', 'fadeInUp', 'slower', 'display')
-//         } else {
-//             aboutOneContentOne.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-//             aboutTwoContentTwo.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-//         }
-//     },
-//     offset: '60%'
-// });
-
 var waypoint = new Waypoint({
     element: document.querySelector('.service-section'),
     handler: function(direction) {
@@ -153,22 +139,7 @@ var waypoint = new Waypoint({
     offset: '60%'
 })
 
-// var waypoint = new Waypoint({
-//     element: document.querySelector('.rating-section'),
-//     handler: function(direction) {
-//         if (direction === "down") {
-//             ratingItems.forEach(el => {
-//                 el.classList.add('animated', 'fadeInUp', 'slower', 'display')
-//             })
-//         } else {
 
-//             ratingItems.forEach(el => {
-//                 el.classList.remove('animated', 'fadeInUp', 'slower', 'display')
-//             });
-//         }
-//     },
-//     offset: '60%'
-// })
 
 new Waypoint({
     element: document.querySelector('#header'),
@@ -293,11 +264,12 @@ window.onload = function() {
 
 
 
-var firstText = 'Financial Technology';
+var firstText = 'Consumer credit';
 var secondText = 'Digital Lending';
-var thirdText = 'Consumer Credit';
-var fourthText = 'Omnichannel collection';
-var fifthText = 'Identity Analysis';
+var thirdText = 'Identity analysis';
+var fourthText = 'Omni collection';
+var fifthText = 'P2P Lending';
+
 
 var changingText = [firstText, secondText, thirdText, fourthText, fifthText];
 var turn = changingText[1];
