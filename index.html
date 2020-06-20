@@ -921,101 +921,48 @@
                 <div class="lend">
 
                     <div class="editor-container">
-                        <textarea name="editor"><?php
-                            defined('BASEPATH') OR exit('No direct script access allowed');
-                            require APPPATH.'controllers/mobi/Api.php';
-                            class Investments Extends Api{
-                                public function __construct(){
-                                    parent::__construct();
-                                }
-                                /**
-                                * Fetch list of loan requests available on the markets
-                                * Pg. 53b
-                                */
-                                public function pending_loan_request_get($page = 0){
-                                    $company_id = $this->get_company_id();
-                                    $limit = 10; // This determines the starting point based on the page selected by the user.
-                                    $offset = $page == 0 ? 0 : abs($page - 1) * $limit;     
-                                    $sql = "SELECT 
-                                                a.legal_name,
-                                                b.request_id, b.request_principal, b.request_tenor, b.request_period_id
-                                            from people_customers as a
-                                            inner join loan_request as b on a.people_id = b.people_id
-                                            where a.lender_id = ?
-                                            LIMIT $offset, $limit";
-                                    $q = $this->db->query($sql, [[$company_id]]);
-                                    $requests = $q->result();
-                                    // response
-                                    return $this->response(array(
-                                                    'status' => TRUE,
-                                                    "message" => $requests
-                                                    ), REST_Controller::HTTP_OK);
-                                }
-                                /**
-                                * Filter - Search pending loans by borrower name
-                                */
-                                public function filter_loan_by_name_post(){
-                                    // Validate the input
-                                    $values = $this->input->post();
-                                    if($values == null or empty($values['name'])){
-                                        return $this->response(array(
-                                            'status' => FALSE,
-                                            "message" => "Invalid Request"
-                                            ), REST_Controller::HTTP_BAD_REQUEST);
-                                    }
-                                    // Filter the input
-                                    $name = '%'.trim(htmlspecialchars($values['name'])).'%';
-                                    // Company ID
-                                    $company_id = $this->get_company_id();
-                                    // Make call..
-                                    $sql = "SELECT 
-                                                a.legal_name,
-                                                b.request_id, b.request_principal, b.request_tenor, b.request_period_id
-                                            from people_customers as a
-                                            inner join loan_request as b on a.people_id = b.people_id
-                                            where a.lender_id = ?
-                                            and a.legal_name like ?";
-                                    $q = $this->db->query($sql, [$company_id, $name]);
-                                    $requests = $q->result();
-                                    // Response
-                                    return $this->response(array(
-                                                    'status' => TRUE,
-                                                    "message" => $requests
-                                                    ), REST_Controller::HTTP_OK);
-                                }
-                                /**
-                                * Loand Market Overview
-                                */
-                                public function loan_market_overview_get(){
-                                    $company_id = $this->get_company_id();
-                                    // Fetch the total sum of loan reqeusts available in the market
-                                    $sql = "SELECT sum(request_principal) as value
-                                            from loan_request 
-                                            inner join people_customers on loan_request.people_id = people_customers.people_id 
-                                            where people_customers.lender_id = $company_id";
-                                    $q = $this->db->query($sql);
-                                    $total_loan_requests = $q->row();
-                                    // Fetch the total number of Lenders and Borrowers
-                                    $sql = "SELECT count(distinct people_id) as count from loan_request where platform_id = $company_id";
-                                    $q = $this->db->query($sql);
-                                    $borrowers = $q->row();
-                                    // Fetch the total number of Lender son the platform
-                                    $sql = "SELECT count(distinct lender_id) as count from request_lenders where platform_id = $company_id";
-                                    $q = $this->db->query($sql);
-                                    $lenders = $q->row();
-                                    // response
-                                    return $this->response(array(
-                                                    'status' => TRUE,
-                                                    "message" => [
-                                                        'total_loan_request_value' => $total_loan_requests->value,
-                                                        'total_active_lenderse' => $borrowers->count,
-                                                        'total_active_borrowers' => $lenders->count
-                                                    ]
-                                                    ), REST_Controller::HTTP_OK);
-                                }
-                            }
-                            
-                            
+                        <textarea name="editor">$final_data["date_added"]=date("Y-m-d");
+                            $final_data["date_modified"]=date("Y-m-d");
+                            $final_data["business_name"]=$this->input->post('profile[name_of_business]');
+                            $final_data["mobile"]=$this->input->post('profile[telephone]');
+                            $final_data["telephone"]=$this->input->post('profile[telephone]');
+                            $final_data["bvn"]=$this->input->post('profile[bvn]');
+                            $final_data["business_registeration_date"]=$this->input->post('profile[date_of_registeration]');
+                            $final_data["business_address"]=$this->input->post('profile[business_address]');
+                            $final_data["rc_number"]=$this->input->post('profile[rcnumber]');			
+                            $final_data["profile_picture"]=$this->input->post('profile[profile_picture]');
+                            $final_data["customer_type"]=2;
+                            $final_data["token"]=random_string('alnum', 16);
+                            $this->db->update("customers",$final_data,['id'=>$insert_id]);
+                            //loan
+                            $loan = [
+                                "date_added"=>date("Y-m-d"),
+                                "date_modified"=>date("Y-m-d"),
+                                "customer_id"=>$insert_id,
+                                "principal"=>$this->input->post('loan_amount[amount]'),
+                                "tenor"=>$this->input->post('loan_amount[duration]'),
+                                "request_period_id"=>2,
+                                "rate"=>5,
+                                "request_rate_period_id"=>2,
+                                "loan_purpose"=>$this->input->post('loan_amount[loan_purpose]'),
+                                "security_type"=>$this->input->post('loan_amount[collateral_type]'),
+                                "mode_of_repayment"=>$this->input->post('loan_amount[repayment_model]'),
+                                "disbursement_date"=>date("Y-m-d"),
+                                "other_loans"=>json_encode($this->input->post("other_loans")),
+                                "guarantors"=>json_encode($this->input->post("guarantors")),
+                                "purpose"=>$this->input->post('loan_amount[purpose]'),
+                            ]; 
+                            $bank_account = [
+                                "bank_id"=>$this->input->post('disbursement[account_bank]'),
+                                "account_number"=>$this->input->post('disbursement[account_number]'),
+                                "account_name"=>$this->input->post('disbursement[account_name]'),
+                                "date_added"=>date("Y-m-d"),
+                                "date_modified"=>date("Y-m-d"),
+                                "sort_code"=>$this->input->post('disbursement[sort_code]'),
+                                "branch"=>$this->input->post('disbursement[branch]'),
+                                "customer_id"=>$insert_id,
+                                "loan_id"=>$loanid
+                            ];  
                             </textarea>
                         <div id="editor"></div>
                     </div>
