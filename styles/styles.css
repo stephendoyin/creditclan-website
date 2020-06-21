@@ -245,10 +245,14 @@ header {
         margin-bottom: 0;
     }
     .header-text {
-        min-width: 550px;
-        max-width: 550px;
+        min-width: 40%;
+        max-width: 40%;
         justify-content: left;
         text-align: left;
+    }
+    .lending .header-text{
+        min-width: 520px;
+        max-width: 520px;
     }
     .header-content {
         padding: 3rem 0;
@@ -1704,6 +1708,7 @@ transform: translateX(-50%);
 
 .bold {
     font-weight: 700;
+    color: #00263b;
 }
 
 
