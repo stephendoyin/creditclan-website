@@ -308,7 +308,11 @@ header {
     color: #314057;
     /* border: 1px solid #fff */
 }
-
+.btn-orange {
+    background: #FB8627;
+    color: #fff;
+    /* border: 1px solid #fff */
+}
 
 /* .header-btn {
 padding: 12px 40px;
@@ -3054,14 +3058,15 @@ img#collections-img {
 @media only screen and (min-width: 560px) {
     .pricing-box {
         width: 47%;
-        margin: 2% 1.5%;
+        margin: 2% 1%;
         max-width: unset;
     }
 }
 
 @media only screen and (min-width: 1040px) {
     .pricing-box {
-        width: 30%;
+        width: 23%;
+        margin: 2% .8%;
     }
 }
 
@@ -3070,10 +3075,7 @@ img#collections-img {
     font-size: 1.6rem;
     letter-spacing: .05rem;
     color: #314057;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 30px 40px;
 }
 
 .price-main {
@@ -3088,7 +3090,7 @@ img#collections-img {
 }
 
 .pricing-value {
-    padding: 20px 40px;
+    padding: 20px;
     border-top: 2px dashed #f4f5fe;
     border-bottom: 2px dashed #f4f5fe;
 }
@@ -3108,7 +3110,7 @@ img#collections-img {
 }
 
 .about-list-adjust {
-    padding: 30px 40px 20px 40px;
+    padding: 30px 20px 20px 20px;
 }
 
 .btn-pricing {
