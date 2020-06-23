@@ -79,3 +79,18 @@ var waypoint = new Waypoint({
     },
     offset: '0%'
 })
+
+
+
+
+let headerBtn = document.querySelector('.header-btn');
+let mainHeaderLength = document.querySelector('.lending').clientHeight/2;
+
+headerBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({
+        top: mainHeaderLength,
+        left: 0,
+        behavior: "smooth"
+    })
+});
