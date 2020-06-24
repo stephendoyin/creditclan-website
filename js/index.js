@@ -313,7 +313,7 @@ function startBackspace() {
             backspace(swapText.innerHTML);
             changeTurn();
         }
-    }, 20000)
+    }, 15000)
 }
 
 
