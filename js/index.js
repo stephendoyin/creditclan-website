@@ -158,20 +158,24 @@ new Waypoint({
 
 
 let last_known_scroll_position = window.scrollY;
+let logo = document.querySelector('.logo');
 
 document.addEventListener('scroll', function() {
     if (window.scrollY > 100) {
         if (last_known_scroll_position > window.scrollY) {
             nav.classList.add("scrolled");
+            logo.src = `images/logo-small.png`;
             nav.classList.remove('hide');
         } else {
             nav.classList.remove('scrolled');
+            logo.src = `images/logo-home.png`;
             nav.classList.add('hide');
 
         }
         last_known_scroll_position = window.scrollY;
     } else {
         nav.classList.remove('scrolled');
+        logo.src = `images/logo-home.png`;
         nav.classList.remove('hide');
 
     }
