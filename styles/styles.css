@@ -3381,8 +3381,17 @@ section.white-bg,
 
 .price-table-row span{
     font-weight: 500;
+    color: #00263b;
 }
 
 .price-table-section{
     padding: 3rem 0;
+}
+
+.section-main-title--flexed {
+    padding-left:  2rem;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
