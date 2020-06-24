@@ -96,3 +96,16 @@ headerBtn.addEventListener('click', function(e){
         behavior: "smooth"
     })
 });
+
+
+var waypoint = new Waypoint({
+    element: document.querySelector(".pricing-section"),
+    handler: function(direction) {
+        if (direction === "down") {
+            btnTop.classList.add('active');
+        } else {
+            btnTop.classList.remove('active');
+        }
+    },
+    offset: '0%'
+})

@@ -3262,7 +3262,7 @@ img#collections-img {
     color: white;
     text-align: center;
     overflow: hidden;
-    z-index: 1;
+    z-index: 88;
 }
 
 .lending header::before {
