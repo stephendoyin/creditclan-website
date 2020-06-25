@@ -3352,7 +3352,7 @@ section.white-bg,
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid rgba(240,242,243,0.4);
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1rem;
 }
 
 .price-table-row:last-child{
@@ -3363,6 +3363,9 @@ section.white-bg,
     color: #00263b;
     font-size: 1.1rem;
     font-weight: 300;
+    position: relative;
+    display: inline-flex;
+    line-height: 1.4;
 }
 .price-table-row p::before{
     content: "";
@@ -3383,16 +3386,19 @@ section.white-bg,
 .price-table-row span{
     font-weight: 500;
     color: #00263b;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.price-table-container{
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .price-table-section{
-    padding: 3rem 0;
+    padding: 6rem 0;
 }
 
 .section-main-title--flexed {
     padding-left:  2rem;
-    padding-right: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
