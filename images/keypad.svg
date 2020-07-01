@@ -1,16 +1,1 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px" class=""><g><g>
-	<g>
-		<g>
-			<path d="M0,96h96V0H0V96z M32,32h32v32H32V32z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<path d="M224,0h-96v96h96V0z M192,64h-32V32h32V64z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<path d="M352,0h-96v96h96V0z M320,64h-32V32h32V64z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<path d="M0,224h96v-96H0V224z M32,160h32v32H32V160z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<path d="M224,128h-96v96h96V128z M192,192h-32v-32h32V192z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<path d="M0,352h96v-96H0V352z M32,288h32v32H32V288z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<polygon points="466.704,294.512 457.52,325.168 480,331.904 480,426.672 432,490.672 432,512 464,512 464,501.328 512,437.328      512,308.096    " data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<path d="M352,176c0-26.51-21.49-48-48-48c-26.51,0-48,21.49-48,48v179.808l-27.776-33.328     c-18.694-22.432-52.032-25.462-74.464-6.768c-22.432,18.694-25.462,52.032-6.768,74.464L240,501.792V512h32v-21.792     L171.568,369.696c-3.132-3.744-4.833-8.479-4.8-13.36c-0.01-6.091,2.651-11.881,7.28-15.84c8.939-7.27,22.026-6.175,29.632,2.48     l27.776,33.328c6.024,7.287,14.978,11.515,24.432,11.536c17.7,0.009,32.073-14.3,32.144-32V176c0-8.837,7.163-16,16-16     s16,7.163,16,16v107.904l45.568,13.68l9.2-30.656l-22.8-6.832V176z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-			<rect x="400.148" y="279.977" transform="matrix(0.2875 -0.9578 0.9578 0.2875 13.0145 609.4495)" width="32" height="32" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-		</g>
-	</g>
-</g></g> </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><path d="M0 96h96V0H0v96zm32-64h32v32H32V32zM224 0h-96v96h96V0zm-32 64h-32V32h32v32zM352 0h-96v96h96V0zm-32 64h-32V32h32v32zM0 224h96v-96H0v96zm32-64h32v32H32v-32zm192-32h-96v96h96v-96zm-32 64h-32v-32h32v32zM0 352h96v-96H0v96zm32-64h32v32H32v-32zm434.704 6.512l-9.184 30.656 22.48 6.736v94.768l-48 64V512h32v-10.672l48-64V308.096z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFF"/><path d="M352 176c0-26.51-21.49-48-48-48s-48 21.49-48 48v179.808l-27.776-33.328c-18.694-22.432-52.032-25.462-74.464-6.768-22.432 18.694-25.462 52.032-6.768 74.464L240 501.792V512h32v-21.792L171.568 369.696a20.606 20.606 0 01-4.8-13.36 20.799 20.799 0 017.28-15.84c8.939-7.27 22.026-6.175 29.632 2.48l27.776 33.328a31.791 31.791 0 0024.432 11.536c17.7.009 32.073-14.3 32.144-32V176c0-8.837 7.163-16 16-16s16 7.163 16 16v107.904l45.568 13.68 9.2-30.656-22.8-6.832V176zm44.219 130.681l9.2-30.65 30.65 9.2-9.2 30.65z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFF"/></svg>
